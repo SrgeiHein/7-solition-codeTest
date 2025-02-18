@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interactive Item Management and User Directory
+
+This Next.js application showcases two main features: an interactive item management system and a user directory grouped by departments.
+
+## Features
+
+### 1. Item Management Page (/)
+
+- Interactive drag-and-drop interface for managing items
+- Items can be moved between three columns:
+  - Main List: Contains all available items
+  - Fruit Column: Temporary storage for fruit items (5-second duration)
+  - Vegetable Column: Temporary storage for vegetable items (5-second duration)
+- Items automatically return to the main list after 5 seconds
+- Items can be manually moved back by clicking them in their respective columns
+- Responsive design with fixed column heights to prevent layout shifts
+
+### 2. User Directory Page (/users)
+
+- Fetches user data from [DummyJSON API](https://dummyjson.com/users)
+- Groups users by their departments
+- Features:
+  - Dynamic department grouping
+  - User cards showing:
+    - Full name
+    - Job title
+    - Email address
+  - Loading state with spinner
+  - Error handling with user-friendly messages
+  - Responsive grid layout
+- Performance optimized with efficient data transformation
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) to view the item management page
+4. Visit [http://localhost:3000/users](http://localhost:3000/users) to see the user directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application includes comprehensive tests for the user directory page. Run tests using:
 
-## Learn More
+```bash
+npm test
+```
 
-To learn more about Next.js, take a look at the following resources:
+Or run in watch mode:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run test:watch
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+- Next.js 14
+- React
+- TypeScript
+- Tailwind CSS
+- Jest & React Testing Library
+- DummyJSON API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/
+│   ├── page.tsx                # Item management page
+│   └── users/
+│       ├── page.tsx           # User directory page
+│       └── __tests__/         # User page tests
+├── services/
+│   └── userService.ts         # API and data transformation
+└── types/
+    └── user.ts               # TypeScript interfaces
+```
